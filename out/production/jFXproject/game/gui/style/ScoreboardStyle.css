@@ -1,0 +1,37 @@
+#scorelabel {
+    -fx-text-fill: white;
+    -fx-padding: 15 30 15 30;
+    -fx-font-family: "Helvetica";
+}
+#scoreScene{
+    -fx-background-image: url("../../../../../../res/dojo.jpg");
+}
+#backButton:hover{
+    -fx-background-color: linear-gradient(#bf6e4e 20%,#bf6e4e 100%),
+    linear-gradient(#8b4513 20%,#8b4513 50%),
+    linear-gradient(#8b4513 20%,#8b4513 40%),
+    linear-gradient(#8b4513 20%,#8c3310 100%),
+    linear-gradient(to bottom, #f0b7a1 0%,#8c3310 77%,#bf6e4e 100%);
+}
+#backButton{
+    -fx-text-fill:white;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+
+    -fx-background-color:
+            linear-gradient(#bf6e4e 20%,#bf6e4e 100%),
+            linear-gradient(#8b4513 20%,#8b4513 50%),
+            linear-gradient(#8b4513 20%,#8b4513 40%),
+            linear-gradient(#8b4513 20%,#8c3310 100%),
+            linear-gradient(#bf6e4e 50%,#8c3310 100%);
+    -fx-background-insets: 0,1,4,5,6;
+    -fx-background-radius: 9,8,5,4,3;
+    -fx-min-width: 50;
+    -fx-min-height: 50;
+}
+#scoreStack{
+    -fx-background-radius: 10;
+    -fx-background-color: rgba(198, 176, 139, 0.7);
+    -fx-min-width: 450;
+}

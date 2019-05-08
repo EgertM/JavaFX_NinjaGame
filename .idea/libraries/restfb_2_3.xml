@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="restfb-2.3">
+    <CLASSES>
+      <root url="file://C:/Program Files (x86)/restfb-2.3.0" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://C:/Program Files (x86)/restfb-2.3.0/javadoc" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="file://C:/Program Files (x86)/restfb-2.3.0/src/main/java" />
+      <root url="file://C:/Program Files (x86)/restfb-2.3.0/src/test/java" />
+      <root url="file://C:/Program Files (x86)/restfb-2.3.0" />
+    </SOURCES>
+    <jarDirectory url="file://C:/Program Files (x86)/restfb-2.3.0" recursive="false" />
+    <jarDirectory url="file://C:/Program Files (x86)/restfb-2.3.0" recursive="false" type="SOURCES" />
+  </library>
+</component>

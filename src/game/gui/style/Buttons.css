@@ -1,0 +1,175 @@
+#facebook{
+    -fx-text-fill:white;
+    -fx-padding: 15 30 15 30;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+
+    -fx-background-color:
+            linear-gradient(#bf6e4e 20%,#bf6e4e 100%),
+            linear-gradient(#8b4513 20%,#8b4513 50%),
+            linear-gradient(#8b4513 20%,#8b4513 40%),
+            linear-gradient(#8b4513 20%,#8c3310 100%),
+            linear-gradient(#bf6e4e 50%,#8c3310 100%);
+    -fx-background-insets: 0,1,4,5,6;
+    -fx-background-radius: 9,8,5,4,3;
+    -fx-max-width: 400;
+    -fx-max-height: 80;
+}
+#scores{
+    -fx-text-fill:white;
+    -fx-padding: 15 30 15 30;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+
+    -fx-background-color:
+            linear-gradient(#bf6e4e 20%,#bf6e4e 100%),
+            linear-gradient(#8b4513 20%,#8b4513 50%),
+            linear-gradient(#8b4513 20%,#8b4513 40%),
+            linear-gradient(#8b4513 20%,#8c3310 100%),
+            linear-gradient(#bf6e4e 50%,#8c3310 100%);
+    -fx-background-insets: 0,1,4,5,6;
+    -fx-background-radius: 9,8,5,4,3;
+    -fx-max-width: 400;
+    -fx-max-height: 80;
+}
+
+#play {
+     -fx-text-fill:white;
+     -fx-padding: 15 30 15 30;
+     -fx-font-family: "Helvetica";
+     -fx-font-size: 18px;
+     -fx-font-weight: bold;
+
+     -fx-background-color:
+             linear-gradient(#bf6e4e 20%,#bf6e4e 100%),
+             linear-gradient(#8b4513 20%,#8b4513 50%),
+             linear-gradient(#8b4513 20%,#8b4513 40%),
+             linear-gradient(#8b4513 20%,#8c3310 100%),
+             linear-gradient(#bf6e4e 50%,#8c3310 100%);
+     -fx-background-insets: 0,1,4,5,6;
+     -fx-background-radius: 9,8,5,4,3;
+     -fx-max-width: 400;
+     -fx-max-height: 80;
+
+}
+#sound {
+    -fx-text-fill:white;
+    -fx-padding: 15 30 15 30;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+
+    -fx-background-color:
+            linear-gradient(#bf6e4e 20%,#bf6e4e 100%),
+            linear-gradient(#8b4513 20%,#8b4513 50%),
+            linear-gradient(#8b4513 20%,#8b4513 40%),
+            linear-gradient(#8b4513 20%,#8c3310 100%),
+            linear-gradient(#bf6e4e 50%,#8c3310 100%);
+    -fx-background-insets: 0,1,4,5,6;
+    -fx-background-radius: 9,8,5,4,3;
+    -fx-max-width: 400;
+    -fx-max-height: 80;
+
+}
+
+
+#instructions {
+    -fx-text-fill:white;
+    -fx-padding: 15 30 15 30;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+
+    -fx-background-color:
+            linear-gradient(#bf6e4e 20%,#bf6e4e 100%),
+            linear-gradient(#8b4513 20%,#8b4513 50%),
+            linear-gradient(#8b4513 20%,#8b4513 40%),
+            linear-gradient(#8b4513 20%,#8c3310 100%),
+            linear-gradient(#bf6e4e 50%,#8c3310 100%);
+    -fx-background-insets: 0,1,4,5,6;
+    -fx-background-radius: 9,8,5,4,3;
+    -fx-max-width: 400;
+    -fx-max-height: 80;
+}
+#heading{
+    -fx-text-fill: white;
+    -fx-font-family: "Copperplate Gothic Bold";
+}
+#play:hover{
+    -fx-background-color:
+            linear-gradient(#bf6e4e 20%,#bf6e4e 100%),
+            linear-gradient(#8b4513 20%,#8b4513 50%),
+            linear-gradient(#8b4513 20%,#8b4513 40%),
+            linear-gradient(#8b4513 20%,#8c3310 100%),
+            linear-gradient(to bottom, #f0b7a1 0%,#8c3310 77%,#bf6e4e 100%);
+
+}
+#sound:hover{
+    -fx-background-color: linear-gradient(#bf6e4e 20%,#bf6e4e 100%),
+    linear-gradient(#8b4513 20%,#8b4513 50%),
+    linear-gradient(#8b4513 20%,#8b4513 40%),
+    linear-gradient(#8b4513 20%,#8c3310 100%),
+    linear-gradient(to bottom, #f0b7a1 0%,#8c3310 77%,#bf6e4e 100%);
+}
+#instructions:hover{
+    -fx-background-color: linear-gradient(#bf6e4e 20%,#bf6e4e 100%),
+    linear-gradient(#8b4513 20%,#8b4513 50%),
+    linear-gradient(#8b4513 20%,#8b4513 40%),
+    linear-gradient(#8b4513 20%,#8c3310 100%),
+    linear-gradient(to bottom, #f0b7a1 0%,#8c3310 77%,#bf6e4e 100%);
+}
+#facebook:hover{
+    -fx-background-color: linear-gradient(#bf6e4e 20%,#bf6e4e 100%),
+    linear-gradient(#8b4513 20%,#8b4513 50%),
+    linear-gradient(#8b4513 20%,#8b4513 40%),
+    linear-gradient(#8b4513 20%,#8c3310 100%),
+    linear-gradient(to bottom, #f0b7a1 0%,#8c3310 77%,#bf6e4e 100%);
+}
+#scores:hover{
+    -fx-background-color: linear-gradient(#bf6e4e 20%,#bf6e4e 100%),
+    linear-gradient(#8b4513 20%,#8b4513 50%),
+    linear-gradient(#8b4513 20%,#8b4513 40%),
+    linear-gradient(#8b4513 20%,#8c3310 100%),
+    linear-gradient(to bottom, #f0b7a1 0%,#8c3310 77%,#bf6e4e 100%);
+}
+#scores:pressed{
+    -fx-background-color:
+    linear-gradient(#8b4513 20%,#8b4513 50%),
+    linear-gradient(#8b4513 20%,#8b4513 40%),
+    linear-gradient(#8b4513 20%,#8c3310 100%),
+    linear-gradient(to bottom, #8c3310 40%,#f0b7a1 92%,#f0b7a1 92%);
+}
+#sound:pressed{
+    -fx-background-color:
+            linear-gradient(#8b4513 20%,#8b4513 50%),
+            linear-gradient(#8b4513 20%,#8b4513 40%),
+            linear-gradient(#8b4513 20%,#8c3310 100%),
+            linear-gradient(to bottom, #8c3310 40%,#f0b7a1 92%,#f0b7a1 92%);
+}
+#instructions:pressed{
+    -fx-background-color:
+            linear-gradient(#8b4513 20%,#8b4513 50%),
+            linear-gradient(#8b4513 20%,#8b4513 40%),
+            linear-gradient(#8b4513 20%,#8c3310 100%),
+            linear-gradient(to bottom, #8c3310 40%,#f0b7a1 92%,#f0b7a1 92%);
+}
+#facebook:pressed{
+    -fx-background-color:
+            linear-gradient(#8b4513 20%,#8b4513 50%),
+            linear-gradient(#8b4513 20%,#8b4513 40%),
+            linear-gradient(#8b4513 20%,#8c3310 100%),
+            linear-gradient(to bottom, #8c3310 40%,#f0b7a1 92%,#f0b7a1 92%);
+}
+#play:pressed{
+    -fx-background-color:
+            linear-gradient(#8b4513 20%,#8b4513 50%),
+            linear-gradient(#8b4513 20%,#8b4513 40%),
+            linear-gradient(#8b4513 20%,#8c3310 100%),
+            linear-gradient(to bottom, #8c3310 40%,#f0b7a1 92%,#f0b7a1 92%);
+}
+
+#menuScene{
+    -fx-background-image: url("../../../../../../res/dojo.jpg");
+}

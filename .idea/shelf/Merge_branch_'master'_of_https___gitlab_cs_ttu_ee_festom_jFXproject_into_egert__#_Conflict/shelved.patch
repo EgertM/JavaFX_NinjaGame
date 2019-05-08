@@ -1,0 +1,1053 @@
+Index: src/sample/DepthComparator.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package sample;\n\nimport java.util.Comparator;\n\nclass DepthComparator implements Comparator<Main.Sequenceable> {\n\n    @Override\n    public int compare(Main.Sequenceable o1, Main.Sequenceable o2) {\n        return (int)(o2.getZ() - o1.getZ());\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/sample/DepthComparator.java	(revision 4f39ee7a92b5762d7de2be13254a61decbdc0ec5)
++++ src/sample/DepthComparator.java	(date 1520324516848)
+@@ -6,6 +6,6 @@
+ 
+     @Override
+     public int compare(Main.Sequenceable o1, Main.Sequenceable o2) {
+-        return (int)(o2.getZ() - o1.getZ());
++        return (int) (o2.getZ() - o1.getZ());
+     }
+ }
+\ No newline at end of file
+Index: src/sample/Enemy.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/sample/Enemy.java	(date 1520324509551)
++++ src/sample/Enemy.java	(date 1520324509551)
+@@ -0,0 +1,139 @@
++package sample;
++
++import javafx.geometry.Point2D;
++import javafx.scene.image.Image;
++
++public class Enemy implements Main.Sequenceable {
++    private Point2D coord;
++    //private double  radius;
++    //private double distance;
++    private Image image;
++    private int Z;
++    private boolean dashing;
++    private int speed;
++    private int dashSpeed;
++    private int dashDist;
++    private Point2D dashEndPos;
++    private int flip;
++    private int offset;
++    private double movementDirection;
++    private boolean collides;
++    private boolean kill;
++
++    public Enemy(double x, double y, Image image) {
++
++        setCoord(x, y);
++        this.image = image;
++        setZ((int) this.getY());
++        setDashing(false);
++        setSpeed(3);
++        setDashSpeed(15);
++        setDashDist(200);
++        this.kill = false;
++
++    }
++
++    public boolean isKill() {
++        return this.kill;
++    }
++
++    public void kill() {
++        this.kill = true;
++    }
++
++    public boolean getCollides(Player player) {
++        return (this.getCoord().distance(player.getCenter()) < 32);
++    }
++
++    public void setMovementDirection(double dir) {
++        this.movementDirection = dir;
++    }
++
++    public double getMovementDirection() {
++        return this.movementDirection;
++    }
++
++    public void setFlip(int flip) {
++        this.flip = flip;
++    }
++
++    public int getFlip() {
++        return this.flip;
++    }
++
++    public void setOffset(int offset) {
++        this.offset = offset;
++    }
++
++    public int getOffset() {
++        return this.offset;
++    }
++
++    public void setDashEndPos(Point2D dashEndPos) {
++        this.dashEndPos = dashEndPos;
++    }
++
++    public Point2D getDashEndPos() {
++        return this.dashEndPos;
++    }
++
++    public Point2D getCoord() {
++        return this.coord;
++    }
++
++    public void setCoord(double x, double y) {
++        this.coord = new Point2D(x, y);
++    }
++
++    public void setSpeed(int speed) {
++        this.speed = speed;
++    }
++
++    public int getSpeed() {
++        return this.speed;
++    }
++
++    public void setDashSpeed(int dashSpeed) {
++        this.dashSpeed = dashSpeed;
++    }
++
++    public int getDashSpeed() {
++        return this.dashSpeed;
++    }
++
++    public void setDashDist(int dashDist) {
++        this.dashDist = dashDist;
++    }
++
++    public int getDashDist() {
++        return this.dashDist;
++    }
++
++    public boolean getDashing() {
++        return this.dashing;
++    }
++
++    public void setDashing(boolean dashing) {
++        this.dashing = dashing;
++    }
++
++    public void setZ(int Z) {
++        this.Z = Z;
++    }
++
++    public int getZ() {
++        return (int) this.coord.getY() + 0 * (int) this.image.getHeight();
++    }
++
++    public Image getImage() {
++        return image;
++    }
++
++    public double getY() {
++        return coord.getY();
++    }
++
++    public double getX() {
++        return coord.getX();
++    }
++}
+Index: src/sample/EnvObject.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package sample;\n\n\nimport javafx.geometry.Point2D;\nimport javafx.scene.image.Image;\n\npublic class EnvObject implements Main.Sequenceable {\n\n    private Point2D coord;\n    private Image image;\n    public int Z;\n\n    public EnvObject(double x, double y, Image image) {\n        setCoord(x,y);\n        this.image = image;\n        this.Z = (int)this.getY();\n\n    }\n    public void setCoord(double x, double y)\n    {\n        this.coord = new Point2D(x,y);\n    }\n\n    public void setZ(int Z) {\n        this.Z = Z;\n    }\n\n    public int getZ() {\n        return this.Z + (int)this.image.getHeight() - 43;\n    }\n\n    public Image getImage() {\n        return image;\n    }\n    public double getX()\n    {\n        return coord.getX();\n    }\n\n    public double getY()\n    {\n        return coord.getY();\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/sample/EnvObject.java	(revision 4f39ee7a92b5762d7de2be13254a61decbdc0ec5)
++++ src/sample/EnvObject.java	(date 1520324521266)
+@@ -11,14 +11,14 @@
+     public int Z;
+ 
+     public EnvObject(double x, double y, Image image) {
+-        setCoord(x,y);
++        setCoord(x, y);
+         this.image = image;
+-        this.Z = (int)this.getY();
++        this.Z = (int) this.getY();
+ 
+     }
+-    public void setCoord(double x, double y)
+-    {
+-        this.coord = new Point2D(x,y);
++
++    public void setCoord(double x, double y) {
++        this.coord = new Point2D(x, y);
+     }
+ 
+     public void setZ(int Z) {
+@@ -26,19 +26,18 @@
+     }
+ 
+     public int getZ() {
+-        return this.Z + (int)this.image.getHeight() - 43;
++        return this.Z + (int) this.image.getHeight() - 60;
+     }
+ 
+     public Image getImage() {
+         return image;
+     }
+-    public double getX()
+-    {
++
++    public double getX() {
+         return coord.getX();
+     }
+ 
+-    public double getY()
+-    {
++    public double getY() {
+         return coord.getY();
+     }
+ 
+Index: src/sample/IntValue.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package sample;\n\npublic class IntValue\n{\n    public int value;\n\n    public IntValue(int i)\n    {\n        value = i;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/sample/IntValue.java	(revision 4f39ee7a92b5762d7de2be13254a61decbdc0ec5)
++++ src/sample/IntValue.java	(date 1520324509551)
+@@ -1,11 +1,9 @@
+ package sample;
+ 
+-public class IntValue
+-{
++public class IntValue {
+     public int value;
+ 
+-    public IntValue(int i)
+-    {
++    public IntValue(int i) {
+         value = i;
+     }
+ }
+Index: src/sample/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// Necessary imports\npackage sample;\n\n\nimport javafx.application.Application;\nimport javafx.event.ActionEvent;\nimport javafx.geometry.Point2D;\nimport javafx.geometry.Pos;\nimport javafx.scene.Parent;\nimport javafx.scene.SnapshotParameters;\nimport javafx.scene.input.KeyCode;\nimport javafx.scene.input.KeyEvent;\nimport javafx.scene.input.MouseDragEvent;\nimport javafx.scene.layout.StackPane;\nimport javafx.scene.layout.VBox;\nimport javafx.geometry.Insets;\nimport javafx.scene.media.Media;\nimport javafx.scene.media.MediaPlayer;\nimport javafx.scene.media.MediaView;\nimport javafx.stage.Stage;\nimport javafx.scene.Scene;\nimport javafx.scene.Group;\nimport javafx.scene.canvas.Canvas;\nimport javafx.scene.canvas.GraphicsContext;\nimport javafx.scene.paint.Color;\nimport javafx.scene.text.Font;\nimport javafx.scene.text.FontWeight;\nimport javafx.scene.image.Image;\nimport javafx.scene.image.ImageView;\nimport javafx.animation.AnimationTimer;\nimport javafx.event.EventHandler;\nimport javafx.scene.input.MouseEvent;\nimport javafx.scene.control.Button;\nimport javafx.scene.control.Label;\n\nimport java.io.File;\n\n//import javafx.scene.shape.Player;\n\n// The Main Class extends Application\n\npublic class Main extends Application {\n    boolean music = true;\n    boolean menuScene = true;\n\n    public static void main(String[] args) {\n        launch(args);\n    }\n\n    // The Application class method start() has to be overridden\n    private double rot_rad = 0;\n    private Point2D lastMousePos = new Point2D(320,240);\n    private int flip = 1; //1 for no flip, -1 for flip\n    private int playerOffset = 0;\n    private int playerSpeed = 4;\n    private int screenWidth = 1024;\n    private int screenHeight = 768;\n    private void preparePlayer(Player player) {\n        player.setMouseDist(lastMousePos.getX(), lastMousePos.getY());\n        if (player.getDistance() > 40) {\n            player.setCenter(player.getX() + Math.cos(rot_rad) * playerSpeed,player.getY() + Math.sin(rot_rad) * playerSpeed);\n        }\n        else {\n            player.setCenter(player.getX(),player.getY());\n        }\n        // original player image is facing left, so width * 1 = horizontally flipped image. for this purpose var flip is used\n        // check if flipping is required, if player x (from left to right) is less than (to the left of) mouse, flip (set flip to -1 and offset to 1)\n        // if playerX greater than mouse x, undo flip\n        if (player.getX() < lastMousePos.getX() && flip == 1) {\n            flip = -1;\n            playerOffset = 1;\n        }\n        else if (player.getX() > lastMousePos.getX() && flip == -1) {\n            flip = 1;\n            playerOffset = 0;\n        }\n    }\n    private void drawPlayer(GraphicsContext gc, Player playerObj, Image playerImg) {\n        double xCoord = playerObj.getX() - 0*playerObj.getRadius();\n        double yCoord = playerObj.getY() - playerObj.getRadius();\n        gc.drawImage( playerImg,\n                xCoord - 26 + playerOffset*64,\n                yCoord, 64*flip, 64);\n    }\n    private Image prepareArrow(Image arrow){\n        ImageView arrowIV = new ImageView(arrow);\n        arrowIV.setRotate(Math.toDegrees(rot_rad) + 90);\n        SnapshotParameters arrowParams = new SnapshotParameters();\n        arrowParams.setFill(Color.TRANSPARENT);\n        return arrowIV.snapshot(arrowParams,null);\n\n    }\n    private void drawArrow(GraphicsContext gc, Image arrow, Player player) {\n        gc.drawImage(prepareArrow(arrow),\n                player.getX() + player.getRadius() - 48 + 32 * Math.cos(rot_rad),\n                player.getY() - (player.getRadius()/2)*0 + 32 * Math.sin(rot_rad));\n    }\n    //public Point2D velocity = new Point2D(0,0);\n    @Override\n\n    public void start(Stage primaryStage) {\n        // Menu Scene\n        StackPane menuStack = new StackPane(); //laseb erinevad Noded laduda üksteise peale\n        //Video mängimiseks taustal\n        Media menuVideo = new Media(new File(\"C:\\\\Users\\\\Egert\\\\IdeaProjects\\\\jFXproject\\\\res\\\\rain.mp4\").toURI().toString());\n        MediaPlayer videoplayer = new MediaPlayer(menuVideo);\n        MediaView videoMediaView = new MediaView(videoplayer);\n\n        //muusika mängimiseks menüüs\n        Media menuMusic = new Media(new File(\"C:\\\\Users\\\\Egert\\\\IdeaProjects\\\\jFXproject\\\\res\\\\gamemusic.mp3\").toURI().toString());\n        MediaPlayer musicplayer = new MediaPlayer(menuMusic);\n        MediaView MusicMediaView = new MediaView(musicplayer);\n\n        //Ülevalt alla kujundus\n        VBox vb = new VBox();\n        vb.setPrefSize(700,700);\n        vb.setAlignment(Pos.TOP_CENTER);\n        vb.setPadding(new Insets(10, 50, 50, 50));\n        vb.setSpacing(10);\n\n        //Heading\n        Label lbl = new Label(\"GAME\");\n        lbl.setFont(Font.font(\"Amble CN\", FontWeight.BOLD, 80));\n        lbl.setPadding(new Insets(20,20,200,20));\n        lbl.setId(\"heading\");\n        vb.getChildren().add(lbl);\n\n        //menu buttons\n        Button btn1 = new Button(\"PLAY\");\n        btn1.setId(\"play\");\n        Button btn2 = new Button(\"TOGGLE SOUND\");\n        btn2.setId(\"sound\");\n        Button btn3 = new Button(\"INSTRUCTIONS\");\n        btn3.setId(\"instructions\");\n\n        vb.getChildren().addAll(btn1,btn2,btn3);\n        menuStack.getChildren().addAll(videoMediaView,vb,MusicMediaView);\n\n        //muusika jääb igaveseks mängima taustal, menüüs saab selle muteda\n        musicplayer.setAutoPlay(music);\n        musicplayer.setCycleCount(MediaPlayer.INDEFINITE);\n\n        videoMediaView.setFitWidth(1500);\n        videoMediaView.setFitHeight(1500);\n        videoplayer.setAutoPlay(true);\n        videoplayer.setCycleCount(MediaPlayer.INDEFINITE);\n\n        Scene menu = new Scene(menuStack,1000,700);\n        primaryStage.setTitle(\"Click the target!\");\n        String cssURL = \"Buttons.css\";\n        String cssButtons = this.getClass().getResource(cssURL).toExternalForm();\n        menu.getStylesheets().add(cssButtons);\n        primaryStage.setScene(menu);\n\n        // A Group is created\n        Group root = new Group();\n        // creates a new scene with a size of 640x480px\n        Scene scene = new Scene(root);\n        // The scene is added to the stage\n\n\n        Canvas canvas = new Canvas(screenWidth, screenHeight);\n        root.getChildren().add(canvas);\n        Player playerObj = new Player(320,240,32);\n        IntValue points = new IntValue(0);\n\n        //menüü \"play\" nupp ->paneb mängu käima\n        btn1.setOnMouseClicked(new EventHandler<MouseEvent>() {\n            @Override\n            public void handle(MouseEvent event) {\n                primaryStage.setScene(scene);\n            }\n        });\n\n        //vajutades \"Q\"-d, saab tagasi menusse\n        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {\n            @Override\n            public void handle(KeyEvent event) {\n                if(event.getCode() == KeyCode.Q){\n                    primaryStage.setScene(menu);\n                }\n            }\n        });\n\n        // mute/unmute sound\n        btn2.setOnMouseClicked(new EventHandler<MouseEvent>() {\n            @Override\n            public void handle(MouseEvent event) {\n                if(music){\n                    music = false;\n                    musicplayer.setVolume(0);\n                }\n                else{\n                    music = true;\n                    musicplayer.setVolume(100);\n                }\n\n            }\n        });\n        double x = 260;\n        double y = 260;\n        playerObj.setCenter(x,y);\n\n        scene.setOnMouseMoved(\n                new EventHandler<MouseEvent>() {\n                    public void handle(MouseEvent e) {\n                        double x = e.getX();\n                        double y = e.getY();\n                        lastMousePos = new Point2D(x,y);\n                        playerObj.setMouseDist(x,y);\n                        if (x > playerObj.getX()) {\n                            rot_rad = Math.atan((y - playerObj.getY()) / (x - playerObj.getX()));\n                            System.out.println(Math.toDegrees(rot_rad));\n                        }\n                        else {\n                            rot_rad = Math.atan((y - playerObj.getY()) / (x - playerObj.getX())) + Math.PI;\n                            System.out.println(Math.toDegrees(rot_rad));\n                        }\n                        /*if (playerObj.getDistance() > 16) {\n                            playerObj.setCenter(playerObj.getX() + Math.cos(rot_rad) * playerSpeed,playerObj.getY() + Math.sin(rot_rad) * playerSpeed);\n\n                        }*/\n                    }\n                });\n        /*scene.setOnMouseClicked(\n                new EventHandler<MouseEvent>()\n                {\n                    public void handle(MouseEvent e)\n                    {\n                        if ( playerObj.containsPoint( e.getX(), e.getY() ) )\n                        {\n                            double x = 50 + 400 * Math.random();\n                            double y = 50 + 400 * Math.random();\n                            playerObj.setCenter(x,y);\n                            points.value++;\n                        }\n                        else\n                            points.value = 0;\n                    }\n                });*/\n        GraphicsContext gc = canvas.getGraphicsContext2D();\n        Font theFont = Font.font( \"Helvetica\", FontWeight.BOLD, 24 );\n        gc.setFont( theFont );\n        gc.setStroke( Color.BLACK );\n        gc.setLineWidth(1);\n        Image playerImg = new Image( \"file:res/player.png\" );\n        Image arrow = new Image(\"file:res/arrow.png\");\n        Image background = new Image(\"file:res/tiles.jpg\");\n        Image background2 = new Image(\"file:res/grass_diffuse.jpg\");\n\n        new AnimationTimer()\n        {\n            public void handle(long currentNanoTime)\n            {\n                // Clear the canvas\n                //draw background\n                for (int i = 0; i < 4; i++) {\n                    for (int j = 0; j < 3; j++) {\n                        gc.drawImage(background2,i*256,j*256,256,256);\n                    }\n\n                }\n\n                playerObj.setMouseDist(lastMousePos.getX(), lastMousePos.getY());\n                //calculate player things. Utilizes preparePlayer to calculate position and flip (left or right)\n                preparePlayer(playerObj);\n                //Draw arrow with proper offset and rotation, utilizes the drawArrow function which in turn utilizes prepareArrow function to calculate angles and position\n                drawArrow(gc, arrow, playerObj);\n                //player must be calculated before, but drawn after arrow\n                //draw player with proper offset\n                drawPlayer(gc, playerObj, playerImg);\n                //TODO: everything\n\n\n\n\n            }\n        }.start();// This code shows the created application\n        primaryStage.show();\n    }\n\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/sample/Main.java	(revision 4f39ee7a92b5762d7de2be13254a61decbdc0ec5)
++++ src/sample/Main.java	(date 1520324523919)
+@@ -1,19 +1,17 @@
+ // Necessary imports
+ package sample;
+ 
+-
+ import javafx.application.Application;
+-import javafx.event.ActionEvent;
++import javafx.geometry.Insets;
+ import javafx.geometry.Point2D;
+ import javafx.geometry.Pos;
+-import javafx.scene.Parent;
+ import javafx.scene.SnapshotParameters;
++import javafx.scene.control.Button;
++import javafx.scene.control.Label;
+ import javafx.scene.input.KeyCode;
+ import javafx.scene.input.KeyEvent;
+-import javafx.scene.input.MouseDragEvent;
+ import javafx.scene.layout.StackPane;
+ import javafx.scene.layout.VBox;
+-import javafx.geometry.Insets;
+ import javafx.scene.media.Media;
+ import javafx.scene.media.MediaPlayer;
+ import javafx.scene.media.MediaView;
+@@ -30,90 +28,196 @@
+ import javafx.animation.AnimationTimer;
+ import javafx.event.EventHandler;
+ import javafx.scene.input.MouseEvent;
+-import javafx.scene.control.Button;
+-import javafx.scene.control.Label;
+ 
+ import java.io.File;
+-
++import java.util.ArrayList;
++import java.util.Comparator;
++import java.util.List;
+ //import javafx.scene.shape.Player;
+ 
+-// The Main Class extends Application
+ 
+ public class Main extends Application {
+-    boolean music = true;
+-    boolean menuScene = true;
++    private boolean music = true;
++
++
++    // The main method starts the application
+ 
+     public static void main(String[] args) {
+         launch(args);
+     }
+ 
+     // The Application class method start() has to be overridden
+-    private double rot_rad = 0;
+-    private Point2D lastMousePos = new Point2D(320,240);
+-    private int flip = 1; //1 for no flip, -1 for flip
+-    private int playerOffset = 0;
+-    private int playerSpeed = 4;
+-    private int screenWidth = 1024;
+-    private int screenHeight = 768;
++    private double rotationInRadians = 0;
++    private Point2D lastMousePos = new Point2D(320, 240);
++    private final static int SCREEN_WIDTH = 1024;
++    private final static int SCREEN_HEIGHT = 768;
++    private final static int PLAYER_DISTANCE_FROM_MOUSE = 150;
++    private final static int PLAYER_NO_DASHING_DISTANCE = 10;
++
++    public interface Sequenceable {
++        int getZ();
++    }
++
+     private void preparePlayer(Player player) {
+-        player.setMouseDist(lastMousePos.getX(), lastMousePos.getY());
+-        if (player.getDistance() > 40) {
+-            player.setCenter(player.getX() + Math.cos(rot_rad) * playerSpeed,player.getY() + Math.sin(rot_rad) * playerSpeed);
+-        }
+-        else {
+-            player.setCenter(player.getX(),player.getY());
++        if (player.getDashing() && player.getDashEndPos().distance(player.getCenter()) < PLAYER_NO_DASHING_DISTANCE) {
++            player.setDashing(false); /*lastMousePos = new Point2D(player.getX(),player.getY());*/
++        }
++        if (!player.getDashing()) {
++            player.setMouseDist(lastMousePos.getX(), lastMousePos.getY());
++            if (lastMousePos.getX() > player.getX()) {
++                rotationInRadians = Math.atan((lastMousePos.getY() - player.getY()) / (lastMousePos.getX() - player.getX()));
++                //System.out.println(Math.toDegrees(rot_rad));
++            } else {
++                rotationInRadians = Math.atan((lastMousePos.getY() - player.getY()) / (lastMousePos.getX() - player.getX())) + Math.PI;
++                //System.out.println(Math.toDegrees(rot_rad));
++            }
++            if (player.getDistance() > PLAYER_DISTANCE_FROM_MOUSE) {
++                player.setCenter(player.getX() + Math.cos(rotationInRadians) * player.getSpeed(), player.getY() + Math.sin(rotationInRadians) * player.getSpeed());
++            } else {
++                player.setCenter(player.getX(), player.getY());
++            }
++        } else {
++            player.setCenter(player.getX() + Math.cos(rotationInRadians) * player.getDashSpeed(), player.getY() + Math.sin(rotationInRadians) * player.getDashSpeed());
++
+         }
++
+         // original player image is facing left, so width * 1 = horizontally flipped image. for this purpose var flip is used
+         // check if flipping is required, if player x (from left to right) is less than (to the left of) mouse, flip (set flip to -1 and offset to 1)
+         // if playerX greater than mouse x, undo flip
+-        if (player.getX() < lastMousePos.getX() && flip == 1) {
+-            flip = -1;
+-            playerOffset = 1;
++        if (player.getX() < lastMousePos.getX() && player.getFlip() == 1 && !player.getDashing()) {
++            player.setFlip(-1);
++            player.setOffset(1);
++        } else if (player.getX() > lastMousePos.getX() && player.getFlip() == -1 && !player.getDashing()) {
++            player.setFlip(1);
++            player.setOffset(0);
++        }
++        player.setZ((int) player.getY());
++        //System.out.println("Depth =" + player.getZ());
++    }
++
++    private void prepareEnemies(List enemyList, Player player, List drawOrder) {
++        for (int i = 0; i < enemyList.size(); i++) {
++            Enemy tempEnemy = (Enemy) enemyList.get(i);
++            prepareEnemy(tempEnemy, player);
++            if (tempEnemy.isKill()) {
++                drawOrder.remove((Enemy) enemyList.get(i));
++                enemyList.remove((Enemy) enemyList.get(i));
++                System.out.println("REMOVED");
++            }
++
+         }
+-        else if (player.getX() > lastMousePos.getX() && flip == -1) {
+-            flip = 1;
+-            playerOffset = 0;
++    }
++
++    private Enemy prepareEnemy(Enemy enemy, Player player) {
++        //which way to look
++        if (player.getX() > enemy.getX()) {
++            enemy.setFlip(-1);
++            enemy.setOffset(1);
++        } else {
++            enemy.setFlip(1);
++            enemy.setOffset(0);
+         }
+-    }
+-    private void drawPlayer(GraphicsContext gc, Player playerObj, Image playerImg) {
+-        double xCoord = playerObj.getX() - 0*playerObj.getRadius();
+-        double yCoord = playerObj.getY() - playerObj.getRadius();
+-        gc.drawImage( playerImg,
+-                xCoord - 26 + playerOffset*64,
+-                yCoord, 64*flip, 64);
++        if (player.getX() > enemy.getX()) {
++            enemy.setMovementDirection(Math.atan((player.getY() - enemy.getY()) / (player.getX() - enemy.getX())));
++            //System.out.println(enemy.getMovementDirection());
++            //System.out.println(Math.toDegrees(rot_rad));
++        } else if (player.getX() < enemy.getX()) {
++            enemy.setMovementDirection(Math.atan((player.getY() - enemy.getY()) / (player.getX() - enemy.getX())) + Math.PI);
++            //System.out.println(enemy.getMovementDirection());
++            //System.out.println(Math.toDegrees(rot_rad));
++        }
++        if (enemy.getCoord().distance(player.getCenter()) > 100) {
++            enemy.setCoord(enemy.getX() + Math.cos(enemy.getMovementDirection()) * enemy.getSpeed(), enemy.getY() + Math.sin(enemy.getMovementDirection()) * enemy.getSpeed());
++        } else {
++            //???
++            //enemy.setCoord(enemy.getX(), enemy.getY());
++        }
++        //check if player or enemy 1) are in the same spot and 2) either are dashing
++        if (enemy.getCollides(player)) {
++            System.out.println("COLLIDING");
++            if (player.getDashing()) {
++                System.out.println("Dashing is " + player.getDashing());
++                System.out.println("KILL");
++                enemy.kill();
++            }
++        }
++        return enemy;
+     }
+-    private Image prepareArrow(Image arrow){
++
++
++    private Image prepareArrow(Image arrow) {
+         ImageView arrowIV = new ImageView(arrow);
+-        arrowIV.setRotate(Math.toDegrees(rot_rad) + 90);
++        arrowIV.setRotate(Math.toDegrees(rotationInRadians) + 90);
+         SnapshotParameters arrowParams = new SnapshotParameters();
+         arrowParams.setFill(Color.TRANSPARENT);
+-        return arrowIV.snapshot(arrowParams,null);
++        return arrowIV.snapshot(arrowParams, null);
+ 
+     }
+-    private void drawArrow(GraphicsContext gc, Image arrow, Player player) {
+-        gc.drawImage(prepareArrow(arrow),
+-                player.getX() + player.getRadius() - 48 + 32 * Math.cos(rot_rad),
+-                player.getY() - (player.getRadius()/2)*0 + 32 * Math.sin(rot_rad));
++
++    private void sceneDraw(GraphicsContext gc, Player playerObj) {
++        //draw player
++        double xCoord = playerObj.getX();
++        double yCoord = playerObj.getY();
++        gc.drawImage(playerObj.getImage(),
++                xCoord - 26 + playerObj.getOffset() * 64,
++                yCoord, 64 * playerObj.getFlip(), 64);
+     }
++
++    private void sceneDraw(GraphicsContext gc, Enemy enemy, Player player) {
++        // draw arrow
++        gc.drawImage(enemy.getImage(),
++                enemy.getX() + enemy.getOffset() * 64,
++                enemy.getY(), 64 * enemy.getFlip(), 64);
++    }
++
++    private void sceneDraw(GraphicsContext gc, PlayerArrow playerArrow, Player player) {
++        // draw arrow
++        gc.drawImage(prepareArrow(playerArrow.getImage()),
++                player.getX() + player.getRadius() - 48 + 32 * Math.cos(rotationInRadians),
++                player.getY() + 32 * Math.sin(rotationInRadians));
++    }
++
++    private void sceneDraw(GraphicsContext gc, EnvObject tree) {
++        //draw tree
++        gc.drawImage(tree.getImage(), tree.getX(), tree.getY());
++    }
++
++    private void mainDraw(List drawOrder, GraphicsContext gc, Player player) {
++        //System.out.println(drawOrder);
++
++        drawOrder.sort(Comparator.comparingInt(Sequenceable::getZ));
++        for (int i = 0; i < drawOrder.size(); i++) {
++            if (drawOrder.get(i) instanceof Player) {
++                sceneDraw(gc, (Player) drawOrder.get(i));
++            } else if (drawOrder.get(i) instanceof PlayerArrow) {
++                sceneDraw(gc, (PlayerArrow) drawOrder.get(i), player);
++            } else if (drawOrder.get(i) instanceof EnvObject) {
++                sceneDraw(gc, (EnvObject) drawOrder.get(i));
++            } else if (drawOrder.get(i) instanceof Enemy) {
++                sceneDraw(gc, (Enemy) drawOrder.get(i), player);
++            }
++        }
++    }
++
+     //public Point2D velocity = new Point2D(0,0);
+     @Override
+-
+     public void start(Stage primaryStage) {
++
+         // Menu Scene
+         StackPane menuStack = new StackPane(); //laseb erinevad Noded laduda üksteise peale
+         //Video mängimiseks taustal
+-        Media menuVideo = new Media(new File("C:\\Users\\Egert\\IdeaProjects\\jFXproject\\res\\rain.mp4").toURI().toString());
++        Media menuVideo = new Media(new File("res/rain.mp4").toURI().toString());
+         MediaPlayer videoplayer = new MediaPlayer(menuVideo);
+         MediaView videoMediaView = new MediaView(videoplayer);
+ 
+         //muusika mängimiseks menüüs
+-        Media menuMusic = new Media(new File("C:\\Users\\Egert\\IdeaProjects\\jFXproject\\res\\gamemusic.mp3").toURI().toString());
++        Media menuMusic = new Media(new File("res/gamemusic.mp3").toURI().toString());
+         MediaPlayer musicplayer = new MediaPlayer(menuMusic);
+         MediaView MusicMediaView = new MediaView(musicplayer);
+ 
+         //Ülevalt alla kujundus
+         VBox vb = new VBox();
+-        vb.setPrefSize(700,700);
++        vb.setPrefSize(700, 700);
+         vb.setAlignment(Pos.TOP_CENTER);
+         vb.setPadding(new Insets(10, 50, 50, 50));
+         vb.setSpacing(10);
+@@ -121,7 +225,7 @@
+         //Heading
+         Label lbl = new Label("GAME");
+         lbl.setFont(Font.font("Amble CN", FontWeight.BOLD, 80));
+-        lbl.setPadding(new Insets(20,20,200,20));
++        lbl.setPadding(new Insets(20, 20, 200, 20));
+         lbl.setId("heading");
+         vb.getChildren().add(lbl);
+ 
+@@ -133,8 +237,8 @@
+         Button btn3 = new Button("INSTRUCTIONS");
+         btn3.setId("instructions");
+ 
+-        vb.getChildren().addAll(btn1,btn2,btn3);
+-        menuStack.getChildren().addAll(videoMediaView,vb,MusicMediaView);
++        vb.getChildren().addAll(btn1, btn2, btn3);
++        menuStack.getChildren().addAll(videoMediaView, vb, MusicMediaView);
+ 
+         //muusika jääb igaveseks mängima taustal, menüüs saab selle muteda
+         musicplayer.setAutoPlay(music);
+@@ -145,13 +249,15 @@
+         videoplayer.setAutoPlay(true);
+         videoplayer.setCycleCount(MediaPlayer.INDEFINITE);
+ 
+-        Scene menu = new Scene(menuStack,1000,700);
++        Scene menu = new Scene(menuStack, 1000, 700);
++
+         primaryStage.setTitle("Click the target!");
+         String cssURL = "Buttons.css";
+         String cssButtons = this.getClass().getResource(cssURL).toExternalForm();
+         menu.getStylesheets().add(cssButtons);
+         primaryStage.setScene(menu);
+ 
++
+         // A Group is created
+         Group root = new Group();
+         // creates a new scene with a size of 640x480px
+@@ -159,9 +265,8 @@
+         // The scene is added to the stage
+ 
+ 
+-        Canvas canvas = new Canvas(screenWidth, screenHeight);
++        Canvas canvas = new Canvas(SCREEN_WIDTH, SCREEN_HEIGHT);
+         root.getChildren().add(canvas);
+-        Player playerObj = new Player(320,240,32);
+         IntValue points = new IntValue(0);
+ 
+         //menüü "play" nupp ->paneb mängu käima
+@@ -176,7 +281,7 @@
+         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+             @Override
+             public void handle(KeyEvent event) {
+-                if(event.getCode() == KeyCode.Q){
++                if (event.getCode() == KeyCode.Q) {
+                     primaryStage.setScene(menu);
+                 }
+             }
+@@ -186,94 +291,110 @@
+         btn2.setOnMouseClicked(new EventHandler<MouseEvent>() {
+             @Override
+             public void handle(MouseEvent event) {
+-                if(music){
++                if (music) {
+                     music = false;
+                     musicplayer.setVolume(0);
+-                }
+-                else{
++                } else {
+                     music = true;
+                     musicplayer.setVolume(100);
+                 }
+ 
+             }
+         });
++
++
++        GraphicsContext gc = canvas.getGraphicsContext2D();
++        Font theFont = Font.font("Helvetica", FontWeight.BOLD, 24);
++        gc.setFont(theFont);
++        gc.setStroke(Color.BLACK);
++        gc.setLineWidth(1);
++        Image playerImg = new Image("file:res/player.png");
++        Image playerDashImg = new Image("file:res/playerdash.png");
++        Image arrow = new Image("file:res/arrow.png");
++        Image background = new Image("file:res/tiles.jpg");
++        Image background2 = new Image("file:res/grass_diffuse.jpg");
++        Image tree = new Image("file:res/tree_1.png");
++        Image enemy = new Image("file:res/enemy.png");
++
++
++        EnvObject tree_1 = new EnvObject(200, 200, tree);
++        Player playerObj = new Player(320, 240, 32, playerImg, playerDashImg);
++        PlayerArrow playerArrow = new PlayerArrow(playerObj.getX(), playerObj.getY(), arrow);
++        Enemy enemy_1 = new Enemy(100, 300, enemy);
++        Enemy enemy_2 = new Enemy(1000, 400, enemy);
++        Enemy enemy_3 = new Enemy(300, 700, enemy);
++
++        List<Enemy> enemyList = new ArrayList<>();
++        enemyList.add(enemy_1);
++        enemyList.add(enemy_2);
++        enemyList.add(enemy_3);
++        List<Sequenceable> drawOrder = new ArrayList<>();
++        drawOrder.add(tree_1);
++        drawOrder.add(playerObj);
++        drawOrder.add(playerArrow);
++        drawOrder.add(enemy_1);
++        drawOrder.add(enemy_2);
++        drawOrder.add(enemy_3);
+         double x = 260;
+         double y = 260;
+-        playerObj.setCenter(x,y);
+-
++        playerObj.setCenter(x, y);
+         scene.setOnMouseMoved(
+                 new EventHandler<MouseEvent>() {
+                     public void handle(MouseEvent e) {
+-                        double x = e.getX();
+-                        double y = e.getY();
+-                        lastMousePos = new Point2D(x,y);
+-                        playerObj.setMouseDist(x,y);
+-                        if (x > playerObj.getX()) {
+-                            rot_rad = Math.atan((y - playerObj.getY()) / (x - playerObj.getX()));
+-                            System.out.println(Math.toDegrees(rot_rad));
+-                        }
+-                        else {
+-                            rot_rad = Math.atan((y - playerObj.getY()) / (x - playerObj.getX())) + Math.PI;
+-                            System.out.println(Math.toDegrees(rot_rad));
+-                        }
+-                        /*if (playerObj.getDistance() > 16) {
+-                            playerObj.setCenter(playerObj.getX() + Math.cos(rot_rad) * playerSpeed,playerObj.getY() + Math.sin(rot_rad) * playerSpeed);
++                        if (!playerObj.getDashing()) {
++                            double x = e.getX();
++                            double y = e.getY();
++                            lastMousePos = new Point2D(x, y);
++                            playerObj.setMouseDist(x, y);
+ 
+-                        }*/
++                        }
++                        //else System.out.println("Dashing, can't move!");
+                     }
+                 });
+-        /*scene.setOnMouseClicked(
+-                new EventHandler<MouseEvent>()
+-                {
+-                    public void handle(MouseEvent e)
+-                    {
+-                        if ( playerObj.containsPoint( e.getX(), e.getY() ) )
+-                        {
+-                            double x = 50 + 400 * Math.random();
+-                            double y = 50 + 400 * Math.random();
+-                            playerObj.setCenter(x,y);
++        scene.setOnMouseClicked(
++                new EventHandler<MouseEvent>() {
++                    public void handle(MouseEvent e) {
++                        if (!playerObj.getDashing()) {
++                            Point2D dashMouse = new Point2D(e.getX(), e.getY());
++                            if (dashMouse.getX() > playerObj.getX()) {
++                                rotationInRadians = Math.atan((dashMouse.getY() - playerObj.getY()) / (dashMouse.getX() - playerObj.getX()));
++                                //System.out.println(Math.toDegrees(rot_rad));
++                            } else {
++                                rotationInRadians = Math.atan((dashMouse.getY() - playerObj.getY()) / (dashMouse.getX() - playerObj.getX())) + Math.PI;
++                                //System.out.println(Math.toDegrees(rot_rad));
++                            }
++                            playerObj.setDashEndPos(new Point2D(playerObj.getX() + playerObj.getDashDist() * Math.cos(rotationInRadians),
++                                    playerObj.getY() + playerObj.getDashDist() * Math.sin(rotationInRadians)));
++                            playerObj.setDashing(true);
++                            lastMousePos = new Point2D(e.getX(), e.getY());
++                            //System.out.print("CurPos = " + playerObj.getCenter());
++                            //System.out.print("DashEndPos = " + playerObj.getDashEndPos());
+                             points.value++;
+-                        }
+-                        else
++                        } else
+                             points.value = 0;
+                     }
+-                });*/
+-        GraphicsContext gc = canvas.getGraphicsContext2D();
+-        Font theFont = Font.font( "Helvetica", FontWeight.BOLD, 24 );
+-        gc.setFont( theFont );
+-        gc.setStroke( Color.BLACK );
+-        gc.setLineWidth(1);
+-        Image playerImg = new Image( "file:res/player.png" );
+-        Image arrow = new Image("file:res/arrow.png");
+-        Image background = new Image("file:res/tiles.jpg");
+-        Image background2 = new Image("file:res/grass_diffuse.jpg");
++                });
+ 
+-        new AnimationTimer()
+-        {
+-            public void handle(long currentNanoTime)
+-            {
++        new AnimationTimer() {
++            public void handle(long currentNanoTime) {
+                 // Clear the canvas
+                 //draw background
+                 for (int i = 0; i < 4; i++) {
+                     for (int j = 0; j < 3; j++) {
+-                        gc.drawImage(background2,i*256,j*256,256,256);
++                        gc.drawImage(background2, i * 256, j * 256, 256, 256);
+                     }
+ 
+                 }
+-
+                 playerObj.setMouseDist(lastMousePos.getX(), lastMousePos.getY());
+                 //calculate player things. Utilizes preparePlayer to calculate position and flip (left or right)
+                 preparePlayer(playerObj);
+-                //Draw arrow with proper offset and rotation, utilizes the drawArrow function which in turn utilizes prepareArrow function to calculate angles and position
+-                drawArrow(gc, arrow, playerObj);
+-                //player must be calculated before, but drawn after arrow
+-                //draw player with proper offset
+-                drawPlayer(gc, playerObj, playerImg);
++                prepareEnemies(enemyList, playerObj, drawOrder);
++                playerArrow.setZ((int) playerObj.getY());
++                mainDraw(drawOrder, gc, playerObj);
++
+                 //TODO: everything
+ 
+ 
+-
+-
+             }
+         }.start();// This code shows the created application
+         primaryStage.show();
+Index: src/sample/Player.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package sample;\n\n\nimport javafx.geometry.Point2D;\nimport javafx.scene.image.Image;\n\npublic class Player implements Main.Sequenceable\n{\n    private Point2D center;\n    private double  radius;\n    private double distance;\n    private Image image;\n    public int Z;\n\n    public Player(double x, double y, double r, Image image)\n    {\n\n        setCenter(x,y);\n        setRadius(r);\n        this.image = image;\n        setZ((int)this.getY());\n    }\n\n    public void setZ(int Z) {\n        this.Z = Z;\n    }\n\n    public int getZ() {\n        return this.Z;\n    }\n\n    public void setCenter(double x, double y)\n    {\n        center = new Point2D(x,y);\n    }\n\n    public Image getImage() {\n        return image;\n    }\n\n    public void setRadius(double r)\n    {\n        radius = r;\n    }\n\n    public double setMouseDist(double mouseX, double mouseY) {\n        distance = Math.sqrt(Math.pow((mouseX - getX()),2) + Math.pow((mouseY - getY()),2));\n        return distance;\n    }\n\n    public double getDistance() {\n        return distance;\n    }\n\n    public void setX(double x)\n    {\n        setCenter(x,center.getY());\n    }\n\n    public void setY(double y)\n    {\n        setCenter(center.getX(),y);\n    }\n\n    public double getX()\n    {\n        return center.getX();\n    }\n\n    public double getY()\n    {\n        return center.getY();\n    }\n\n    public double getRadius()\n    {\n        return radius;\n    }\n\n    public boolean containsPoint(double x, double y)\n    {\n        return (center.distance(x,y) < radius);\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/sample/Player.java	(revision 4f39ee7a92b5762d7de2be13254a61decbdc0ec5)
++++ src/sample/Player.java	(date 1520324526377)
+@@ -4,21 +4,100 @@
+ import javafx.geometry.Point2D;
+ import javafx.scene.image.Image;
+ 
+-public class Player implements Main.Sequenceable
+-{
++public class Player implements Main.Sequenceable {
+     private Point2D center;
+-    private double  radius;
++    private double radius;
+     private double distance;
+     private Image image;
+-    public int Z;
++    private Image dashImage;
++    private Image activeImage;
++    private int Z;
++    private boolean dashing;
++    private int speed;
++    private int dashSpeed;
++    private int dashDist;
++    private Point2D dashEndPos;
++    private int flip;
++    private int offset;
+ 
+-    public Player(double x, double y, double r, Image image)
+-    {
++    public Player(double x, double y, double r, Image image, Image dashImage) {
+ 
+-        setCenter(x,y);
++        setCenter(x, y);
+         setRadius(r);
+         this.image = image;
+-        setZ((int)this.getY());
++        setZ((int) this.getY());
++        setDashing(false);
++        setSpeed(4);
++        setDashSpeed(15);
++        setDashDist(200);
++        setFlip(1);
++        setOffset(0);
++        this.activeImage = this.image;
++        this.dashImage = dashImage;
++    }
++
++    public void setFlip(int flip) {
++        this.flip = flip;
++    }
++
++    public int getFlip() {
++        return this.flip;
++    }
++
++    public void setOffset(int offset) {
++        this.offset = offset;
++    }
++
++    public int getOffset() {
++        return this.offset;
++    }
++
++
++    public void setDashEndPos(Point2D dashEndPos) {
++        this.dashEndPos = dashEndPos;
++    }
++
++    public Point2D getDashEndPos() {
++        return this.dashEndPos;
++    }
++
++    public Point2D getCenter() {
++        return this.center;
++    }
++
++    public void setSpeed(int speed) {
++        this.speed = speed;
++    }
++
++    public int getSpeed() {
++        return this.speed;
++    }
++
++    public void setDashSpeed(int dashSpeed) {
++        this.dashSpeed = dashSpeed;
++    }
++
++    public int getDashSpeed() {
++        return this.dashSpeed;
++    }
++
++    public void setDashDist(int dashDist) {
++        this.dashDist = dashDist;
++    }
++
++    public int getDashDist() {
++        return this.dashDist;
++    }
++
++    public boolean getDashing() {
++        return this.dashing;
++    }
++
++    public void setDashing(boolean dashing) {
++        this.dashing = dashing;
++        if (dashing) {
++            this.activeImage = this.dashImage;
++        } else this.activeImage = this.image;
+     }
+ 
+     public void setZ(int Z) {
+@@ -29,22 +108,20 @@
+         return this.Z;
+     }
+ 
+-    public void setCenter(double x, double y)
+-    {
+-        center = new Point2D(x,y);
++    public void setCenter(double x, double y) {
++        center = new Point2D(x, y);
+     }
+ 
+     public Image getImage() {
+-        return image;
++        return this.activeImage;
+     }
+ 
+-    public void setRadius(double r)
+-    {
++    public void setRadius(double r) {
+         radius = r;
+     }
+ 
+     public double setMouseDist(double mouseX, double mouseY) {
+-        distance = Math.sqrt(Math.pow((mouseX - getX()),2) + Math.pow((mouseY - getY()),2));
++        distance = Math.sqrt(Math.pow((mouseX - getX()), 2) + Math.pow((mouseY - getY()), 2));
+         return distance;
+     }
+ 
+@@ -52,33 +129,27 @@
+         return distance;
+     }
+ 
+-    public void setX(double x)
+-    {
+-        setCenter(x,center.getY());
++    public void setX(double x) {
++        setCenter(x, center.getY());
+     }
+ 
+-    public void setY(double y)
+-    {
+-        setCenter(center.getX(),y);
++    public void setY(double y) {
++        setCenter(center.getX(), y);
+     }
+ 
+-    public double getX()
+-    {
++    public double getX() {
+         return center.getX();
+     }
+ 
+-    public double getY()
+-    {
++    public double getY() {
+         return center.getY();
+     }
+ 
+-    public double getRadius()
+-    {
++    public double getRadius() {
+         return radius;
+     }
+ 
+-    public boolean containsPoint(double x, double y)
+-    {
+-        return (center.distance(x,y) < radius);
++    public boolean containsPoint(double x, double y) {
++        return (center.distance(x, y) < radius);
+     }
+ }
+\ No newline at end of file
+Index: src/sample/PlayerArrow.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package sample;\n\nimport javafx.geometry.Point2D;\nimport javafx.scene.image.Image;\n\npublic class PlayerArrow implements Main.Sequenceable {\n\n    private Point2D coord;\n    private Image image;\n    private double rotation;\n    public int Z;\n\n    public PlayerArrow(double x, double y, Image image) {\n        setCoord(x,y);\n        this.image = image;\n        this.rotation = 0;\n    }\n\n    public void setCoord(double x, double y) {this.coord = new Point2D (x,y);}\n\n    public Image getImage(){\n        return image;\n    }\n    public void setZ(int Z) {\n        this.Z = (Z - 1);\n    }\n\n    public int getZ() {\n        return this.Z;\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/sample/PlayerArrow.java	(revision 4f39ee7a92b5762d7de2be13254a61decbdc0ec5)
++++ src/sample/PlayerArrow.java	(date 1520324528412)
+@@ -11,16 +11,19 @@
+     public int Z;
+ 
+     public PlayerArrow(double x, double y, Image image) {
+-        setCoord(x,y);
++        setCoord(x, y);
+         this.image = image;
+         this.rotation = 0;
+     }
+ 
+-    public void setCoord(double x, double y) {this.coord = new Point2D (x,y);}
++    public void setCoord(double x, double y) {
++        this.coord = new Point2D(x, y);
++    }
+ 
+-    public Image getImage(){
++    public Image getImage() {
+         return image;
+     }
++
+     public void setZ(int Z) {
+         this.Z = (Z - 1);
+     }
+Index: README.rst
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- README.rst	(date 1520324509520)
++++ README.rst	(date 1520324509520)
+@@ -0,0 +1,86 @@
++Ninja mäng
++==========
++
++Väikeses ruumis on ninja (sina) ja vastased. Sinu eesmärgiks on vastaseid tappa.
++Vastased proovivad sind tappa.
++
++Liikmed
++-------
++
++- Fedor Stomakhin (festom)
++- Marti Ingmar Liibert (mliibe)
++- Egert Ott Metsandi (egmets)
++
++Funktsionaalsus
++---------------
++
++- Ninjat saab liigutada hiirega
++- Ninja liigub hiire suunas
++- Ninja saab surma, kui teine ninja (vastane) ta ära tapab
++- Punkte saab, kui tapad teise ninja ära (slashid läbi temast hiirega vajutades)
++- Punktide eest saab mängu lõpus raha, mille eest on võimalik poest soetada erinevaid asju
++- Mäng läheb jooksvalt raskemaks; mida rohkem aega on möödunud, seda rohkem tekib vastaseid juurde
++- Mäng on Facebookiga liidestatud - saad näha oma Facebooki sõprade skoore
++
++**AI**
++
++- Vastaseid juhib arvuti
++- Erinevad raskustasemed (lihtne, keskmine, raske)
++- Vastased proovivad sind tappa sind
++- Vastased on kas teised ninjad, kes käituvad nagu sina, või vibuga ninjad, kes lasevad sind kaugelt nooltega
++
++Ekraanivaated
++-------------
++- Menüü
++- Mäng
++- Mäng läbi ekraanivaade
++
++**Menüü**
++
++- Alusta mängu nupp
++- Juhised nupp
++- Poe nupp
++- Edetabel (Facebookiga liidestatud) nupp
++- Sätted nupp
++
++**Mäng**
++
++Mängu ala on piiratud seintega.
++Ekraani üleval paremal kuvatakse jooksvad punktid.
++
++**Juhised**
++
++Mängujuhis - tekst ja pildid, mis kirjeldavad kuidas mängida
++
++**Edetabel**
++
++Kuvatakse jooksev edetabel. Edetabelis näed oma Facebooki sõpru, kes seda mängu mängivad ja nende skoore. Skoorid on jaotatud raskustasemete järgi.
++
++**Seaded**
++
++Kuvatakse erinevad seaded, mis mõjutavad mängu. Näiteks raskustaseme valik, kas muusika mängib jms.
++
++**Pood**
++
++Poest saab osta teenitud raha eest power-up'e ja upgrade'sid.
++
++Plaan
++-----
++
++- \1-4. nädal: Projektiplaaniga alustamine, tiimi komplekteerimine, ideede genereerimine, hiirega ninja liigutamise funktsionaalsuse arendamine, põhilise mänguvaate arendamine
++- \5-8. nädal: Vastaste lisamine, AI arendamine, animatsioonide tegemine, sprite'de loomine
++- \9-11. nädal: Facebookiga liidestamine, AI ja mängukogemuse silumine, poe lisamine mängu
++- \12-13. nädal: Esitamine, viimistlemine
++- \14. nädal: JAR-komplekteerimine
++- \15. nädal: Parandused/täiendused
++- \16. nädal: Lõplik esitamine
++
++Kasutatav tehnoloogia
++---------------------
++
++JavaFX
++
++Punktisoov
++----------
++
++10 punkti
+\ No newline at end of file

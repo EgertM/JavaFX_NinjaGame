@@ -1,0 +1,14 @@
+<changelist name="Merge_branch_'master'_of_https___gitlab_cs_ttu_ee_festom_jFXproject_into_egert__#_Conflict" date="1520932724906" recycled="false">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Merge_branch_'master'_of_https___gitlab_cs_ttu_ee_festom_jFXproject_into_egert__#_Conflict/shelved.patch" />
+  <option name="DESCRIPTION" value="Merge branch 'master' of https://gitlab.cs.ttu.ee/festom/jFXproject into egert  # Conflicts: #&#9;src/sample/Main.java #&#9;src/sample/Player.java" />
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="res/enemy.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Merge_branch_'master'_of_https___gitlab_cs_ttu_ee_festom_jFXproject_into_egert__#_Conflict/enemy.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="res/playerDash.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Merge_branch_'master'_of_https___gitlab_cs_ttu_ee_festom_jFXproject_into_egert__#_Conflict/playerDash.png" />
+  </binary>
+</changelist>
